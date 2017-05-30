@@ -9,7 +9,7 @@ app.use(cors());
 //setup middleware
 
 var authCheck = jwt({
-    secret: new Buffer('mVXv_k7o4kIa73Cd3n5CW2riBpBIzQ9J1kJ6eXKNE1HOyTaHoSQh6YpjyxyqyAWG', 'base64'),
+    secret: new Buffer('mVXv_k7o4kIa73Cd3n5CW2riBpBIzQ9J1kJ6eXKNE1HOyTaHoSQh6YpjyxyqyAWG'),
     audience: '5BOPjc1TzhEDdyylzwvGL1Uek7q7Bdc9'
 });
 
@@ -20,6 +20,7 @@ app.get('/api/public', function(req, res) {
     res.json({ message: "Hello from a public endpoint. No authentication needed" });
 });
 
+//private
 app.get('/api/private', authCheck, function(req, res) {
     res.json({ message: "Hello from a private endpoint.Authentication needed" });
 });
